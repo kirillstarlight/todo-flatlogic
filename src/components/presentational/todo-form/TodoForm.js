@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-import InputBase from "@material-ui/core/InputBase";
+import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+
 import "./TodoForm.css";
+
+import { TextField } from "@material-ui/core";
 
 class TodoForm extends Component {
   constructor(props) {
@@ -20,25 +23,40 @@ class TodoForm extends Component {
 
   render() {
     return (
-      <div id="todo-form">
-        <InputBase
-          name="time"
-          placeholder="Time"
-          onChange={e => this.handleChange(e)}
-        />
-        <InputBase
-          name="text"
-          placeholder="Text"
-          onChange={e => this.handleChange(e)}
-        />
-        <InputBase
-          name="description"
-          placeholder="Description"
-          label="Description"
-          onChange={e => this.handleChange(e)}
-        />
-        <Button onClick={this.props.addTodo}>Creat</Button>
-      </div>
+      <React.Fragment>
+        <Grid container spacing={16}>
+          <Grid item xs={6}>
+            <TextField
+              name="name"
+              placeholder="Name"
+              label="Name of todo"
+              onChange={e => this.handleChange(e)}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              name="time"
+              placeholder="Time"
+              label="Deadline time"
+              onChange={e => this.handleChange(e)}
+            />
+          </Grid>
+        </Grid>
+        <Grid container spacing={16}>
+          <Grid item xs={6}>
+            <TextField
+              name="description"
+              placeholder="Description"
+              label="Description"
+              multiline
+              onChange={e => this.handleChange(e)}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <Button onClick={this.props.addTodo} varian="contained">Create</Button>
+          </Grid>
+        </Grid>
+      </React.Fragment>
     );
   }
 }
