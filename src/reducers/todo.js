@@ -12,8 +12,6 @@ const reducer = (state = initialState, action) => {
           content: action.payload.content
         }
       ];
-    case SEARCH_TODO:
-      return [...state.filter(card => card.name.includes(action.payload))];
     default:
       return [...state];
   }

@@ -8,6 +8,7 @@ import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 
+
 const styles = theme => ({
   root: {
     width: "100%"
@@ -71,16 +72,7 @@ const styles = theme => ({
 class SearchAppBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      searchText: ""
-    };
   }
-
-  handleChange = e => {
-    this.setState({
-      searchText: e.target.value
-    });
-  };
 
   render() {
     const { classes } = this.props;
@@ -88,9 +80,6 @@ class SearchAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-            <MenuIcon />
-          </IconButton> */}
             <Typography
               className={classes.title}
               variant="h6"
@@ -110,7 +99,7 @@ class SearchAppBar extends React.Component {
                   root: classes.inputRoot,
                   input: classes.inputInput
                 }}
-                onChange={e => this.handleChange(e)}
+                onChange={e=>this.props.searchTodo(e)}
               />
             </div>
           </Toolbar>

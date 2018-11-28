@@ -10,16 +10,14 @@ export default class TodoList extends Component {
 
   render() {
     console.log(this.props);
+    const result = this.props.cards.filter(card =>
+      card.content.time.includes(this.props.searchText)
+    );
     return (
       <div id="todo-list">
         <Grid container spacing={16}>
-          {this.props.cards.map(card => (
-            <TodoCard
-              key={card.id}
-              name={card.name}
-              description={card.description}
-              time={card.time}
-            />
+          {result.map(card => (
+            <TodoCard key={card.id} card={card.content} />
           ))}
         </Grid>
       </div>

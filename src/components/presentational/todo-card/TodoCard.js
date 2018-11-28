@@ -12,13 +12,12 @@ const TodoCard = props => {
       <Card>
         <CardContent>
           <Typography color="textSecondary" gutterBottom>
-            {props.name}
+            {props.card.name}
           </Typography>
           <Typography variant="h5" component="h2">
-            {props.time}
+            {props.card.time}
           </Typography>
-          <Typography color="textSecondary">adjective</Typography>
-          <Typography component="p">{props.description}</Typography>
+          <Typography component="p">{props.card.description}</Typography>
         </CardContent>
         <CardActions>
           {/* <Button size="small">Learn More</Button> */}
