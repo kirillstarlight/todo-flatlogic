@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 
 import TodoList from "../presentational/todo-list/TodoList.js";
+import {completeTodo, changePriority, deleteTodo} from "../../actions/todo";
 
 const mapStateToProps = state => {
   return {
@@ -10,7 +11,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    changePriority: (id) => dispatch(changePriority(id)),
+    completeTodo: (id) => dispatch(completeTodo(id)),
+    deleteTodo:(id)=>dispatch(deleteTodo(id))
+  };
 };
 
 export default connect(

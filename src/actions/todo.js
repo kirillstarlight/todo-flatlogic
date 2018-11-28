@@ -5,7 +5,7 @@ import {
   CHANGE_PRIORITY
 } from "../constants/index";
 
-let nextTodoId = 1;
+let nextTodoId = 3;
 
 export const addTodo = content => ({
   type: ADD_TODO,
@@ -13,4 +13,19 @@ export const addTodo = content => ({
     id: nextTodoId++,
     content: content
   }
+});
+
+export const completeTodo = id => ({
+  type: COMPLETE_TODO,
+  payload: id
+});
+
+export const changePriority = id => ({
+  type: CHANGE_PRIORITY,
+  payload: id
+});
+
+export const deleteTodo = id => ({
+  type: DELETE_TODO,
+  payload: id
 });
