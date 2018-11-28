@@ -35,6 +35,26 @@ const initialState = [
       priority: true
     },
     isComplete: false
+  },
+  {
+    id: 3,
+    content: {
+      name: "Test1",
+      description: "test1",
+      time: "30.12.2018",
+      priority: false
+    },
+    isComplete: false
+  },
+  {
+    id: 4,
+    content: {
+      name: "Test2",
+      description: "test2",
+      time: "31.12.2018",
+      priority: true
+    },
+    isComplete: false
   }
 ];
 
@@ -60,8 +80,8 @@ const reducer = (state = initialState, action) => {
       return [...state];
     case DELETE_TODO:
       console.log(action.payload);
-      state.filter(card => card.id === action.payload);
-      return [...state];
+      
+      return [...state.filter(card => card.id!==action.payload)];
     case COMPLETE_TODO:
       state.forEach(card => {
         if (card.id == action.payload) {

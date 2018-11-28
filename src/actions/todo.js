@@ -5,7 +5,7 @@ import {
   CHANGE_PRIORITY
 } from "../constants/index";
 
-let nextTodoId = 3;
+let nextTodoId = 5;
 
 export const addTodo = content => ({
   type: ADD_TODO,

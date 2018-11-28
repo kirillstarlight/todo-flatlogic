@@ -47,9 +47,6 @@ class TodoList extends Component {
                   id={card.id}
                   card={card.content}
                   complete={true}
-                  deleteTodo={()=>this.props.deleteTodo}
-                  changePriority={()=>this.props.changePriority}
-                  completeTodo={()=>this.props.completeTodo}
                 />
               ))}
           </Grid>
