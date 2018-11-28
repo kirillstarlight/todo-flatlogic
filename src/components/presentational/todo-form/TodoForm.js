@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import { TextField } from "@material-ui/core";
+import Checkbox from "@material-ui/core/Checkbox";
 
 import "./TodoForm.css";
-
-import { TextField } from "@material-ui/core";
 
 class TodoForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       time: "28.11.2018",
-      text: "",
+      name: "",
       description: "",
       priority: false
     };
@@ -21,10 +21,14 @@ class TodoForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  handleChangePriority(e) {
+    this.setState({ [e.target.name]: e.target.checked });
+  }
+
   render() {
     return (
-      <React.Fragment>
-        <Grid container spacing={16}>
+      <div id="todo-form">
+        <Grid container spacing={12}>
           <Grid item xs={6}>
             <TextField
               name="name"
@@ -42,7 +46,7 @@ class TodoForm extends Component {
             />
           </Grid>
         </Grid>
-        <Grid container spacing={16}>
+        <Grid container spacing={12}>
           <Grid item xs={6}>
             <TextField
               name="description"
@@ -53,10 +57,27 @@ class TodoForm extends Component {
             />
           </Grid>
           <Grid item xs={6}>
-            <Button onClick={this.props.addTodo} varian="contained">Create</Button>
+            <Checkbox
+              checked={this.props.priority}
+              onChange={e => this.handleChangePriority(e)}
+              label="Is priority?"
+              name="priority"
+            />
           </Grid>
         </Grid>
-      </React.Fragment>
+        <Grid container spacing={12} className="create-button">
+          <Grid item xs={16}>
+            <Button
+              onClick={() => this.props.addTodo(this.state)}
+              varian="contained"
+              size="large"
+              color="primary"
+            >
+              Create
+            </Button>
+          </Grid>
+        </Grid>
+      </div>
     );
   }
 }
