@@ -3,6 +3,7 @@ import "./App.css";
 
 import TodoForm from "./containers/TodoFormContainer";
 import SearchAppBar from "./presentational/app-bar/AppBar";
+import TodoList from "./containers/TodoListContainer";
 
 export default class App extends Component {
   render() {
@@ -10,6 +11,7 @@ export default class App extends Component {
       <React.Fragment>
         <SearchAppBar />
         <TodoForm />
+        <TodoList />
       </React.Fragment>
     );
   }

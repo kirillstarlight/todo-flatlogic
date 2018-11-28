@@ -28,7 +28,7 @@ class TodoForm extends Component {
   render() {
     return (
       <div id="todo-form">
-        <Grid container spacing={12}>
+        <Grid container spacing={16}>
           <Grid item xs={6}>
             <TextField
               name="name"
@@ -46,7 +46,7 @@ class TodoForm extends Component {
             />
           </Grid>
         </Grid>
-        <Grid container spacing={12}>
+        <Grid container spacing={16}>
           <Grid item xs={6}>
             <TextField
               name="description"
@@ -65,8 +65,8 @@ class TodoForm extends Component {
             />
           </Grid>
         </Grid>
-        <Grid container spacing={12} className="create-button">
-          <Grid item xs={16}>
+        <Grid container spacing={16} className="create-button">
+          <Grid item >
             <Button
               onClick={() => this.props.addTodo(this.state)}
               varian="contained"

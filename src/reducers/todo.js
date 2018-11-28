@@ -1,4 +1,4 @@
-import { ADD_TODO } from "../constants/index";
+import { ADD_TODO, SEARCH_TODO } from "../constants/index";
 
 const initialState = [];
 
@@ -12,6 +12,8 @@ const reducer = (state = initialState, action) => {
           content: action.payload.content
         }
       ];
+    case SEARCH_TODO:
+      return [...state.filter(card => card.name.includes(action.payload))];
     default:
       return [...state];
   }
