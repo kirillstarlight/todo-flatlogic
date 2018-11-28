@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { TextField } from "@material-ui/core";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from "@material-ui/core/Checkbox";
 
 import "./TodoForm.css";
@@ -9,8 +10,9 @@ import "./TodoForm.css";
 class TodoForm extends Component {
   constructor(props) {
     super(props);
+    const date = new Date();
     this.state = {
-      time: "28.11.2018",
+      time: date.getDate() + "." + date.getMonth() + "." + date.getFullYear(),
       name: "",
       description: "",
       priority: false
@@ -25,6 +27,16 @@ class TodoForm extends Component {
     this.setState({ [e.target.name]: e.target.checked });
   }
 
+  handleClick = () => {
+    this.props.addTodo(this.state);
+    const date = new Date();
+    this.setState({
+      time: date.getDate() + "." + date.getMonth() + "." + date.getFullYear(),
+      name: "",
+      description: "",
+      priority: false
+    });
+  };
   render() {
     return (
       <div id="todo-form">
@@ -35,6 +47,7 @@ class TodoForm extends Component {
               placeholder="Name"
               label="Name of todo"
               onChange={e => this.handleChange(e)}
+              value={this.state.name}
             />
           </Grid>
           <Grid item xs={6}>
@@ -43,6 +56,7 @@ class TodoForm extends Component {
               placeholder="Time"
               label="Deadline time"
               onChange={e => this.handleChange(e)}
+              value={this.state.time}
             />
           </Grid>
         </Grid>
@@ -54,21 +68,26 @@ class TodoForm extends Component {
               label="Description"
               multiline
               onChange={e => this.handleChange(e)}
+              value={this.state.description}
             />
           </Grid>
           <Grid item xs={6}>
-            <Checkbox
-              checked={this.props.priority}
-              onChange={e => this.handleChangePriority(e)}
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.props.priority}
+                  onChange={e => this.handleChangePriority(e)}
+                  name="priority"
+                />
+              }
               label="Is priority?"
-              name="priority"
             />
           </Grid>
         </Grid>
         <Grid container spacing={16} className="create-button">
-          <Grid item >
+          <Grid item>
             <Button
-              onClick={() => this.props.addTodo(this.state)}
+              onClick={() => this.handleClick()}
               varian="contained"
               size="large"
               color="primary"

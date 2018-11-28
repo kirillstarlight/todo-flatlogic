@@ -1,6 +1,15 @@
 import { ADD_TODO, SEARCH_TODO } from "../constants/index";
 
-const initialState = [];
+const initialState = [
+  {
+    id: 0,
+    content: {
+      name: "Task",
+      description: "Todo list with priority",
+      time: "28.11.2018"
+    }
+  }
+];
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
